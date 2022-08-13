@@ -25,8 +25,19 @@ os.environ['PATH'] += r':/opt/homebrew/bin/chromedriver'
 driver = webdriver.Chrome(executable_path=os.environ['PATH'], service_args=["--verbose", "--log-path=:/qc1.log"])
 driver = webdriver.Chrome()
 '''
+url = "https://incidecoder.com/products/"
 
-html_text = requests.get("https://incidecoder.com/products/apieu-tea-tree-spot-patches").text
+prName = input("Enter your product: ")
+prName = prName.split()
+
+for x in range(len(prName) -1):
+    url+=prName[x]
+    url+="-"
+
+url += str(prName[-1])
+#print(url)
+
+html_text = requests.get(url).text
 soup = BeautifulSoup(html_text, 'lxml')
 ingredients = soup.find_all('a', class_ = "ingred-link black")
 
