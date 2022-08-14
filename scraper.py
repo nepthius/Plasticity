@@ -79,15 +79,26 @@ for ingredient in ingredients:
         med.append(ingredient.text)
 
 if len(high) > 0:
-    print("Your product contains ingredients classified as highly susceptible to microplastic contamination")
     print("Here are the ingredients that have been flagged as high risk:")
     for x in high:
         print(x)
 if len(med) > 0:
-    print("Your product contains ingredients classified as susceptible to microplastic contamination")
     print("Here are the ingredients that have been flagged as medium risk:")
     for x in med:
         print(x)
 if len(med) == 0 and len(high) == 0:
     print("Your product has low-no microplastic contamination!")
+
+'''
+print("Here are some related products: ")
+
+
+
+relateds = soup.find_all('div', class_ = "bottom-recommendation-section")
+pref = soup.find_all('div', attrs ={'class':'cardingtitle brandtitlebox-v2 previewbox-greytext'})
+print(relateds)
+print(pref)
+for related in relateds:
+    print(related.text)
+'''
 
