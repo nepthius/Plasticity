@@ -28,10 +28,14 @@
         float: left;
         width: 475px;
     }
+    .caro-pad {
+        padding: 5px;
+    }
     img {
         margin: 10px;
         margin-right: 15px;
         float: right;
+        border-radius: 20px;
     }
     body {
         background-color: #b5d0c0;
@@ -52,7 +56,7 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/product">Product</a>
+                <a class="nav-link" href="/product">Risk-Rater</a>
             </li>
     </div>
 </nav>
@@ -60,19 +64,20 @@
     Find the plastics in your products. Keep microplastics out of your body.
 </div>
 <div>
-    <img src="/static/StockImage.png" width="900" height="670"/>
+    <img src="/static/plastic.png" width="900" height="670"/>
 </div>
 <div class="blurb2">
+    <div class="caro-pad">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000">
-            <img src="/static/StockImage.png" class="d-block w-120" alt="...">
+            <div class="carousel-item active" data-bs-interval="2000">
+                <img src="/static/blurb7.png" class="d-block w-100" alt="...">
+            </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="/static/blurb5.png" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="/static/Plasticity_Logo_Green.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="/static/blurb6.png" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -83,6 +88,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+    </div>
       </div>
 </div>
 
