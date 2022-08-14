@@ -48,7 +48,7 @@ print("Search results are as follows: ")
 
 
 def risk_display(prName):
-    dic = {"name": prName, "risk":"", "high":[], "med":[]}
+    dic = {"name": prName, "risk":"", "high":[], "med":[], "image":""}
     purl = "https://incidecoder.com/products/"
     prName = prName.lower()
     prName = prName.replace(",", "")
