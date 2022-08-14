@@ -21,6 +21,16 @@
         float: left;
         margin-left: 15px;
     }
+    input {
+        background-color: rgb(16, 173, 16);
+        font-size: large;
+        font-family: serif;
+        color: white;
+        border-radius: 10px;
+    }
+    body {
+        background-color: #b5d0c0;
+    }
 </style>
 {% endblock %}
 
@@ -58,63 +68,38 @@
 </div>
 
 <div class="div-leftest">
-    <div class="card" style="width: 18rem;">
+    {% for item in data %}
+    <div class="card" style="width: 75rem;">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-</div>
+            <h5 class="card-title">{{item.name}}</h5>
 
-<div class="div-left">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            {% if item.risk == 'high' %}
+            <h6 class="card-subtitle mb-2 text-muted">Risk: <span style="color: red;">{{item.risk}}</span></h6>
+            {% endif %}
+            {% if item.risk == 'medium' %}
+            <h6 class="card-subtitle mb-2 text-muted">Risk: <span style="color: orange;">{{item.risk}}</span></h6>
+            {% endif %}
+            {% if item.risk == 'low' %}
+            <h6 class="card-subtitle mb-2 text-muted">Risk: <span style="color: green;">{{item.risk}}</span></h6>
+            {% endif %}
+
+            {% if item.high|length == 0 %}
+            <p class="card-text">High Risk Ingredients: none</p>
+            {% endif %}
+            {% if item.med|length == 0 %}
+            <p class="card-text">Medium Risk Ingredients: none</p>
+            {% endif %}
+
+            {% for ingredient in item.high %}
+            <p class="card-text">High Risk Ingredients: {{ingredient}}</p>
+            {% endfor %}
+            {% for ingredient in item.med %}
+            <p class="card-text">Medium Risk Ingredients: {{ingredient}}</p>
+            {% endfor %}
+
         </div>
     </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 
 <!-- Bootstrap Javascripts -->  
