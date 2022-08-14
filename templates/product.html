@@ -4,33 +4,11 @@
 <title>Plasticity Home</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-    .blurb1 {
-        margin: 15px;
-        padding: 15px;
-        background-color: #076390;
-        color: white;
-        font-family: sans-serif;
-        font-size: 45px;
-        border-radius: 20px;
-        display: flex;
-        float: left;
-        width: 475px;
-    }
-    .blurb2 {
-        margin: 15px;
-        padding: 15px;
-        background-color: #076390;
-        color: white;
-        font-family: sans-serif;
-        font-size: 24px;
-        border-radius: 20px;
-        display: flex;
-        float: left;
-        width: 475px;
-    }
-    img {
+    .search {
         margin: 10px;
-        margin-right: 15px;
+    }
+    .button-margin {
+        margin: 5px;
         float: right;
     }
 </style>
@@ -53,16 +31,21 @@
             </li>
     </div>
 </nav>
-<div class="blurb1">
-    Find the plastics in your products. Keep microplastics out of your body.
+<div class="search">
+    <form>
+        <div class="form-container">
+            <div class="input-group">
+                <span class="input-group-text">Enter a Product</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <div class="button-margin">
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
-<div>
-    <img src="/static/StockImage.png" width="900" height="670"/>
-</div>
-<div class="blurb2">
-    Microplastics have been identified in nearly 87% of cosmetic products in the world today. With the effects of these materials still unknown, it is essential that you know what products put you at higher risk for microplastic consumption. Click on 'Product' to get started on finding lower-risk substitutes.
-</div>
-
 
 <!-- Bootstrap Javascripts -->  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> 
