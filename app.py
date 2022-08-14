@@ -113,7 +113,7 @@ def route():
         print(data)
 
 
-    return render_template('product.html')
+    return render_template('product.html', data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)
