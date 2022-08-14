@@ -52,6 +52,9 @@ for x in items:
 
 purl = "https://incidecoder.com/products/"
 prName = input("Choose your product from the list above: ")
+prName = prName.lower()
+prName = prName.replace(",", "")
+prName = prName.replace("'", "")
 prName = prName.split()
 
 for x in range(len(prName) -1):
@@ -59,7 +62,7 @@ for x in range(len(prName) -1):
     purl+="-"
 
 purl += str(prName[-1])
-#print(url)
+print(purl)
 
 html_text = requests.get(purl).text
 soup = BeautifulSoup(html_text, 'lxml')
