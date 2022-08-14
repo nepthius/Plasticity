@@ -25,19 +25,43 @@ os.environ['PATH'] += r':/opt/homebrew/bin/chromedriver'
 driver = webdriver.Chrome(executable_path=os.environ['PATH'], service_args=["--verbose", "--log-path=:/qc1.log"])
 driver = webdriver.Chrome()
 '''
-url = "https://incidecoder.com/products/"
+items = []
 
-prName = input("Enter your product: ")
+lurl = "https://incidecoder.com/search?query="
+lName = input("Enter your product: ")
+lName = lName.split()
+
+for x in range(len(lName) -1):
+    lurl+=lName[x]
+    lurl+="-"
+
+lurl += str(lName[-1])
+
+html_text = requests.get(lurl).text
+soup = BeautifulSoup(html_text, 'lxml')
+products = soup.find_all('a', class_ = "klavika simpletextlistitem")
+
+for product in products:
+    if product.text not in items:
+        items.append(product.text)
+
+print("Search results are as follows: ")
+
+for x in items:
+    print(x)
+
+purl = "https://incidecoder.com/products/"
+prName = input("Choose your product from the list above: ")
 prName = prName.split()
 
 for x in range(len(prName) -1):
-    url+=prName[x]
-    url+="-"
+    purl+=prName[x]
+    purl+="-"
 
-url += str(prName[-1])
+purl += str(prName[-1])
 #print(url)
 
-html_text = requests.get(url).text
+html_text = requests.get(purl).text
 soup = BeautifulSoup(html_text, 'lxml')
 ingredients = soup.find_all('a', class_ = "ingred-link black")
 
@@ -62,5 +86,5 @@ if len(med) > 0:
     print("Here are the ingredients that have been flagged as medium risk:")
     for x in med:
         print(x)
-#print(ingredients.text)
+
 
