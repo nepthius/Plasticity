@@ -49,51 +49,52 @@ print("Search results are as follows: ")
 for x in items:
     print(x)
 
-purl = "https://incidecoder.com/products/"
+
 prName = input("Choose your product from the list above: ")
-prName = prName.lower()
-prName = prName.replace(",", "")
-prName = prName.replace("'", "")
-prName = prName.split()
-
-for x in range(len(prName) -1):
-    purl+=prName[x]
-    purl+="-"
-
-purl += str(prName[-1])
-#print(purl)
-
-html_text = requests.get(purl).text
-soup = BeautifulSoup(html_text, 'lxml')
-ingredients = soup.find_all('a', class_ = "ingred-link black")
 
 
-temp = ""
-high = []
-med = []
+def risk_display(prName):
+    purl = "https://incidecoder.com/products/"
+    prName = prName.lower()
+    prName = prName.replace(",", "")
+    prName = prName.replace("'", "")
+    prName = prName.split()
+    for x in range(len(prName) -1):
+        purl+=prName[x]
+        purl+="-"
 
-for ingredient in ingredients:
-    if ingredient.text in risk_factor["high"] and ingredient.text not in high:
-        high.append(ingredient.text)
-    elif ingredient.text in risk_factor["medium"] and ingredient.text not in med:
-        med.append(ingredient.text)
+    purl += str(prName[-1])
+    #print(purl)
 
-if len(high) > 0:
-    print("Here are the ingredients that have been flagged as high risk:")
-    for x in high:
-        print(x)
-if len(med) > 0:
-    print("Here are the ingredients that have been flagged as medium risk:")
-    for x in med:
-        print(x)
-if len(med) == 0 and len(high) == 0:
-    print("Your product has low-no microplastic contamination!")
+
+    html_text = requests.get(purl).text
+    soup = BeautifulSoup(html_text, 'lxml')
+    ingredients = soup.find_all('a', class_ = "ingred-link black")
+
+
+    temp = ""
+    high = []
+    med = []
+
+    for ingredient in ingredients:
+        if ingredient.text in risk_factor["high"] and ingredient.text not in high:
+            high.append(ingredient.text)
+        elif ingredient.text in risk_factor["medium"] and ingredient.text not in med:
+            med.append(ingredient.text)
+
+    if len(high) > 0:
+        print("Here are the ingredients that have been flagged as high risk:")
+        for x in high:
+            print(x)
+    if len(med) > 0:
+        print("Here are the ingredients that have been flagged as medium risk:")
+        for x in med:
+            print(x)
+    if len(med) == 0 and len(high) == 0:
+        print("Your product has low-no microplastic contamination!")
 
 '''
-print("Here are some related products: ")
-
-
-
+print("related products: ")
 relateds = soup.find_all('div', class_ = "bottom-recommendation-section")
 pref = soup.find_all('div', attrs ={'class':'cardingtitle brandtitlebox-v2 previewbox-greytext'})
 print(relateds)
@@ -101,4 +102,7 @@ print(pref)
 for related in relateds:
     print(related.text)
 '''
+
+
+
 
