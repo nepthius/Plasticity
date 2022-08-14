@@ -62,7 +62,7 @@ for x in range(len(prName) -1):
     purl+="-"
 
 purl += str(prName[-1])
-print(purl)
+#print(purl)
 
 html_text = requests.get(purl).text
 soup = BeautifulSoup(html_text, 'lxml')
@@ -89,5 +89,6 @@ if len(med) > 0:
     print("Here are the ingredients that have been flagged as medium risk:")
     for x in med:
         print(x)
-
+if len(med) == 0 and len(high) == 0:
+    print("Your product has low-no microplastic contamination!")
 
