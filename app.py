@@ -6,7 +6,7 @@ app= Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/route')
+@app.route('/product')
 def route():
     return render_template('home.html')
 
